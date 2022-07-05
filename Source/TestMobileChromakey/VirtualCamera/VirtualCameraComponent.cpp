@@ -19,16 +19,22 @@ void UVirtualCameraComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	FHttpModule * Http = &FHttpModule::Get();
+	FHttpRequestRef RequestRef = Http->CreateRequest();
+	RequestRef->OnProcessRequestComplete().BindUObject(this, &UVirtualCameraComponent::OnResRecived);
+	//RequestRef->SetURL("https://jsonplaceholder.typicode.com/posts/1");
+	RequestRef->SetURL("http://192.168.1.179:3000");
+	RequestRef->SetVerb("Get");
+	RequestRef->ProcessRequest();
+
+	UE_LOG(LogTemp, Warning, TEXT("Huhuhu"));
 	// ...
 	
 }
 
 
-// Called every frame
-void UVirtualCameraComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UVirtualCameraComponent::OnResRecived(FHttpRequestPtr Req, FHttpResponsePtr Res, bool Successfully)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
+	UE_LOG(LogTemp, Warning, TEXT("OnResRecived"));
 }
 

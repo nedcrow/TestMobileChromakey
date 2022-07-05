@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Http.h"
 #include "VirtualCameraComponent.generated.h"
 
 
@@ -21,8 +22,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	void OnResRecived(FHttpRequestPtr Req, FHttpResponsePtr Res, bool Successfully);
 		
 };

@@ -39,7 +39,7 @@ public class MobileHelper : ModuleRules
 				"InputCore",
 				"Slate",
 				"SlateCore",
-				"MobileHelper",
+				//"MobileHelper",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
