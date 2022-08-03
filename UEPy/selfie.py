@@ -84,7 +84,7 @@ def selfie():
             cv2.imwrite(texture_path + 'selfie_sample.jpg', img_output)
 
             # unreal
-            texture_task = build_import_task(texture_path + 'selfie_sample.jpg', '/Game/Textures')
+            texture_task = build_import_task(texture_path + 'selfie_sample.jpg', '/Game/Textures/SelfieTextures')
             execute_import_tasks([texture_task])
 
 
@@ -93,7 +93,7 @@ def build_import_task(filename, destination_path):
     task = unreal.AssetImportTask()
 
     task.set_editor_property('automated', True)
-    task.set_editor_property('destination_name', 'Test')
+    task.set_editor_property('destination_name', 'T_Selfie')
     task.set_editor_property('destination_path', destination_path)
     task.set_editor_property('filename', filename)
     task.set_editor_property('replace_existing', True)
